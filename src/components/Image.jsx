@@ -1,13 +1,13 @@
-export default function CardImage({itemName}){
+export default function CardImage({itemName, handleClick}){
 
     return(
         <div>
             <img
                     src={`https://img.pokemondb.net/artwork/${itemName}.jpg`}
-                    alt={itemName} // Adding alt text for accessibility
+                    alt={itemName} 
                     width={"100px"}
                     height={"auto"}
-                    
+                    onClick={handleClick(itemName)}
                     />
             <p>{itemName}</p>        
         </div>
