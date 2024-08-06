@@ -1,5 +1,5 @@
 import CardImage from "./Image"
-export default function Card({pokeData}){
+export default function Card({pokeData, chosenCards, setChosenCards, score, topScore, setTopScore}){
     
 
     function fillArrayOfPokemon(){
@@ -25,15 +25,12 @@ export default function Card({pokeData}){
         return Math.floor(Math.random() * max);
     }
 
-    function handleClick(){
-        console.log("cl");
-
-    }
+   
 
     return(
         <>
             {fillArrayOfPokemon().map((item) => (
-                <CardImage itemName = {item} key = {item} handleClick={handleClick}/>
+                <CardImage itemName = {item} key = {item} chosenCards = {chosenCards} setChosenCards = {setChosenCards} score={score} setTopScore={setTopScore} topScore={topScore}/>
                 
             ))}
             

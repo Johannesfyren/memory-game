@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react"
 import Card from "./Card";
 
-let cardInfo = [];
-//https://img.pokemondb.net/artwork/pikachu.jpg
+
+
 
 
 export function Cardholder(){
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState('true');
+    const [chosenCards, setChosenCards] = useState([]);
+    const [topScore, setTopScore] = useState('')
+    let score = chosenCards.length;
     
     useEffect(() =>{        
         fetchCardInfo();
@@ -19,7 +22,6 @@ export function Cardholder(){
         const response = fetch('https://pokeapi.co/api/v2/pokemon/?limit=20&offset=20'); 
        
         const dataFromApi = (await response).json();
-        console.log(await dataFromApi,"hellos");
         setData(await dataFromApi);
         setLoading(false);
     
@@ -30,31 +32,19 @@ export function Cardholder(){
     
 
 
-    function handlebtnClick(){
-        console.log(data)
-    }
-
 
     return(
         <>
+            <p>Current Score: {chosenCards.length}</p>
+            <p>Top Score: {topScore}</p>
             <div
                 className="Cardholder"
             >
-            {loading ? '' : <Card pokeData = {data}/>}
+            {loading ? '' : <Card pokeData = {data} chosenCards = {chosenCards} setChosenCards = {setChosenCards} score={score} setTopScore={setTopScore} topScore={topScore}/>}
             </div>
-            <button onClick={handlebtnClick}></button>
+            
         </>
     )
     // 
 }
 
-// function fetchCardInfo(){
-//     fetch('https://pokeapi.co/api/v2/pokemon/?limit=20&offset=20')
-//     .then(response => response.json())
-//     .then((data) =>{
-//         cardInfo = data.map((data, index) => data[index].url)
-//         console.log(cardInfo);
-//     })
-//     .catch(error => console.error(error));
-    
-// }
