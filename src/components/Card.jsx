@@ -1,5 +1,6 @@
 import CardImage from "./Image"
-export default function Card({pokeData, chosenCards, setChosenCards, score, topScore, setTopScore}){
+import PropTypes from 'prop-types'
+function Card({pokeData, chosenCards, setChosenCards, score, topScore, setTopScore}){
     
 
     function fillArrayOfPokemon(){
@@ -40,3 +41,10 @@ export default function Card({pokeData, chosenCards, setChosenCards, score, topS
        
     )
 }
+
+Card.propTypes = {
+    setTopScore:PropTypes.number,
+    topScore:PropTypes.number,
+    pokeData:PropTypes.array
+}
+export default Card

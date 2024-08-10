@@ -1,3 +1,5 @@
+
+
 export default function CardImage({itemName, chosenCards, setChosenCards, score, topScore, setTopScore}){
 
     function handleClick (){
